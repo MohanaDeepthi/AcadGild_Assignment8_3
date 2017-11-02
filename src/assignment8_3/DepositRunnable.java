@@ -2,17 +2,31 @@ package assignment8_3;
 
 public class DepositRunnable implements Runnable{
 	
-	private Account acct = new Account(200);
+	private BankAccount account;
+	
+	private double amount;
+	private int repetetions;
+	
 	
 
+	public DepositRunnable(BankAccount account, double amount, int repetetions) {
+		this.account=account;
+		this.amount=amount;
+		this.repetetions=repetetions;
+		
+		
+	}
+
+
 	@Override
-	public void run() {
+	public void run() {//implementing run method
 		try
 	      {
-	         for (int i = 1; i <= 5; i++)
+	         for (int i = 1; i <= repetetions; i++)//loop through no of repetetions
 	         {
-	            acct.deposit(200);
-	            Thread.sleep(1000);
+	        	
+	        		account.deposit(amount);
+	                Thread.sleep(1000);
 	         }
 	      }
 	      catch (InterruptedException exception) {}

@@ -1,15 +1,27 @@
 package assignment8_3;
 
-public class WithDrawRunnable {
-	private Account acct = new Account(200);
-	public void run()
+public class WithDrawRunnable implements Runnable{
+	
+	private BankAccount account;
+	private double amount;
+	private int repetetions;
+	
+	
+	public WithDrawRunnable(BankAccount account, double amount, int repetetions) {
+		this.account=account;
+		this.amount=amount;
+		this.repetetions=repetetions;
+		
+	}
+	public void run()//implementing run
 	   {
 	      try
 	      {
-	         for (int i = 1; i <= 10; i++)
+	         for (int i = 1; i <= repetetions; i++)//loop through repetitions
 	         {
-	            acct.withdraw(200);
-	            Thread.sleep(100);
+	        	
+	        	 account.withdraw(amount);
+	        	 Thread.sleep(100);
 	         }
 	      }
 	      catch (InterruptedException exception) {}
